@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parcial Bases de Datos Multimedia</title>
+</head>
+<body>
+  <h1>Parcial Bases de Datos Multimedia</h1>
+
+  <section>
+    <h2>Registrar espacio cultural</h2>
+    <input type="text" id="space_name" placeholder="Nombre del espacio" />
+    <input type="text" id="address" placeholder="Dirección" />
+    <input type="number" id="max_capacity" placeholder="Capacidad máxima" />
+    <input type="text" id="conservation_status" placeholder="Estado de conservación" />
+    <input type="text" id="operational_status" placeholder="Estado operativo" />
+    <input type="text" id="dependency_name" placeholder="Dependencia administrativa" />
+    <button id="btnCreateSpace">Registrar espacio</button>
+    <p id="spaceResult"></p>
+  </section>
+
+  <hr />
+
+  <section>
+    <h2>Ver espacios culturales</h2>
+    <button id="btnGetSpaces">Mostrar espacios</button>
+    <ul id="spaceList"></ul>
+  </section>
+
+  <hr />
+
+  <section>
+    <h2>Registrar organización</h2>
+    <input type="text" id="organization_name" placeholder="Nombre de la organización" />
+    <input type="email" id="contact_email" placeholder="Correo de contacto" />
+    <input type="text" id="organization_phone" placeholder="Teléfono" />
+    <button id="btnCreateOrganization">Registrar organización</button>
+    <p id="organizationResult"></p>
+  </section>
+
+  <hr />
+
+  <section>
+    <h2>Ver organizaciones</h2>
+    <button id="btnGetOrganizations">Mostrar organizaciones</button>
+    <ul id="organizationList"></ul>
+  </section>
+
+  <hr />
+
+  <section>
+    <h2>Registrar reserva</h2>
+    <input type="number" id="cultural_space_id" placeholder="ID espacio" />
+    <input type="number" id="organization_id" placeholder="ID organización" />
+    <input type="number" id="requested_capacity" placeholder="Aforo solicitado" />
+    <input type="date" id="reservation_date" />
+    <input type="time" id="start_time" />
+    <input type="time" id="end_time" />
+    <button id="btnCreateReservation">Registrar reserva</button>
+    <p id="reservationResult"></p>
+  </section>
+
+  <hr />
+
+  <section>
+    <h2>Consultar estado de reserva</h2>
+    <input type="number" id="reservation_id" placeholder="ID reserva" />
+    <button id="btnGetReservation">Consultar reserva</button>
+    <ul id="reservationData"></ul>
+  </section>
+
+  <hr />
+
+  <section>
+    <h2>Ver reservas</h2>
+    <button id="btnGetReservations">Mostrar reservas</button>
+    <ul id="reservationList"></ul>
+  </section>
+
+  <script src="./js/sql.js"></script>
+</body>
+</html>
