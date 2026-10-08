@@ -1,7 +1,7 @@
 const mysql = require("mysql2/promise");
-const { patrimonioConfig, reservasConfig } = require("../env/mysqlConfig");
+const { heritageConfig, bookingConfig } = require("../env/mysqlConfig");
 
-const patrimonioDb = mysql.createPool(patrimonioConfig);
-const reservasDb = mysql.createPool(reservasConfig);
+const heritageDb = mysql.createPool(heritageConfig);
+const bookingDb = mysql.createPool(bookingConfig);
 
-module.exports = { patrimonioDb, reservasDb };
+module.exports = { heritageDb, bookingDb };

@@ -1,12 +1,13 @@
 {
-  "name": "baseproyecto2026",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "cultural-spaces-booking",
+  "version": "1.0.1",
+  "private": true,
+  "description": "Cultural spaces and reservations with Express and MySQL",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "test": "node --test"
   },
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^5.2.1",
