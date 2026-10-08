@@ -25,7 +25,7 @@ btnCreateSpace.addEventListener("click", async () => {
   };
 
   try {
-    const response = await fetch("/test/space", {
+    const response = await fetch("/api/spaces", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -34,7 +34,7 @@ btnCreateSpace.addEventListener("click", async () => {
     });
 
     const result = await response.json();
-    spaceResult.innerText = JSON.stringify(result);
+    spaceResult.innerText = result.error || result.message;
   } catch (error) {
     spaceResult.innerText = "Error al registrar espacio";
   }
@@ -42,9 +42,10 @@ btnCreateSpace.addEventListener("click", async () => {
 
 btnGetSpaces.addEventListener("click", async () => {
   try {
-    const response = await fetch("/test/space");
+    const response = await fetch("/api/spaces");
     const data = await response.json();
 
+    if (!response.ok) throw new Error("Request failed");
     spaceList.innerHTML = "";
 
     if (!data.length) {
@@ -70,7 +71,7 @@ btnCreateOrganization.addEventListener("click", async () => {
   };
 
   try {
-    const response = await fetch("/test/organization", {
+    const response = await fetch("/api/organizations", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -79,7 +80,7 @@ btnCreateOrganization.addEventListener("click", async () => {
     });
 
     const result = await response.json();
-    organizationResult.innerText = JSON.stringify(result);
+    organizationResult.innerText = result.error || result.message;
   } catch (error) {
     organizationResult.innerText = "Error al registrar organización";
   }
@@ -87,9 +88,10 @@ btnCreateOrganization.addEventListener("click", async () => {
 
 btnGetOrganizations.addEventListener("click", async () => {
   try {
-    const response = await fetch("/test/organization");
+    const response = await fetch("/api/organizations");
     const data = await response.json();
 
+    if (!response.ok) throw new Error("Request failed");
     organizationList.innerHTML = "";
 
     if (!data.length) {
@@ -118,7 +120,7 @@ btnCreateReservation.addEventListener("click", async () => {
   };
 
   try {
-    const response = await fetch("/test/reservation", {
+    const response = await fetch("/api/reservations", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -127,7 +129,7 @@ btnCreateReservation.addEventListener("click", async () => {
     });
 
     const result = await response.json();
-    reservationResult.innerText = JSON.stringify(result);
+    reservationResult.innerText = result.error || result.message;
   } catch (error) {
     reservationResult.innerText = "Error al registrar reserva";
   }
@@ -135,9 +137,13 @@ btnCreateReservation.addEventListener("click", async () => {
 
 btnGetReservation.addEventListener("click", async () => {
   const id = document.getElementById("reservation_id").value;
+  if (!Number.isSafeInteger(Number(id)) || Number(id) <= 0) {
+    reservationData.textContent = "Ingrese un identificador válido";
+    return;
+  }
 
   try {
-    const response = await fetch(`/test/reservation/${id}`);
+    const response = await fetch(`/api/reservations/${id}`);
     const result = await response.json();
 
     reservationData.innerHTML = "";
@@ -161,9 +167,10 @@ btnGetReservation.addEventListener("click", async () => {
 
 btnGetReservations.addEventListener("click", async () => {
   try {
-    const response = await fetch("/test/reservation");
+    const response = await fetch("/api/reservations");
     const data = await response.json();
 
+    if (!response.ok) throw new Error("Request failed");
     reservationList.innerHTML = "";
 
     if (!data.length) {
